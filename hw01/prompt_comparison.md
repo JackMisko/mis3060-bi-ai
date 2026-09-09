@@ -55,3 +55,13 @@ This strategy can lay out some pieces of the puzzle, but it doesn't offer much i
 
 ## Conclusion
 The zero-shot strategy was the fastest and easiest to use, but its response stayed fairly broad and did not tailor the answer to a specific business audience. The role-assigned strategy produced the most useful output for a BI analyst because it organized the metrics around management questions such as current losses, future risk, concentration, and profitability, which makes the analysis more actionable for decision-making. The few-shot strategy created the clearest and most consistent format, making individual metrics easy to understand and compare, but it focused more on each metric separately than on the overall portfolio picture. Overall, the role-assigned approach was strongest because it added business context and explained how the metrics would actually be used in a portfolio review.
+
+## Fact Check
+### Exact Claim Claude Made
+"the delinquency rate (often broken into aging buckets like 30/60/90+ days past due)”
+### Source Used 
+https://www.consumerfinance.gov/data-research/mortgage-performance-trends/about-the-data/
+### What Source Says
+The CFPB defines a 30–89 day delinquency rate as the number of mortgages that are 30 to 89 days past due divided by total outstanding mortgages, and a 90-day delinquency rate as mortgages that are 90 or more days past due but not in foreclosure. It also defines delinquency as a missed mortgage payment recorded on a consumer’s credit file.
+### Do they Agree?
+Yes, they agree. Claude’s statement that lenders commonly analyze delinquency using aging categories such as 30, 60, and 90+ days past due is consistent with the CFPB’s use of delinquency-age groupings
