@@ -2,7 +2,7 @@
 # Script name : hw02_eda.py
 # Purpose     : Exploratory data analysis of Wildcat Capital transaction data
 #               (MIS3060 HW2)
-# Dataset     : 02_Data/Raw/fact_transactions.csv
+# Dataset     : data/raw/fact_transactions.csv
 # Author      : Jack Miskiewicz (generated with Claude Cowork)
 # Generated   : 2026-09-22
 # How to run  : python hw02/hw02_eda.py   (from the repository root)
@@ -26,7 +26,7 @@ from matplotlib.ticker import FuncFormatter
 # -----------------------------------------------------------------------------
 # Settings
 # -----------------------------------------------------------------------------
-DATA_PATH = os.path.join("02_Data", "Raw", "fact_transactions.csv")
+DATA_PATH = os.path.join("data", "raw", "fact_transactions.csv")
 OUT_DIR = "hw02"
 CHART_DIR = os.path.join(OUT_DIR, "charts")
 PROFILE_PATH = os.path.join(OUT_DIR, "hw02_profile.txt")
@@ -62,7 +62,7 @@ dollar_fmt = FuncFormatter(lambda v, _: f"${v:,.0f}")
 print("=== 1. LOAD DATA ===")
 if not os.path.exists(DATA_PATH):
     print(f"ERROR: Data file not found at '{DATA_PATH}'.")
-    print("Place fact_transactions.csv in 02_Data/Raw/ and run this script "
+    print("Place fact_transactions.csv in data/raw/ and run this script "
           "from the repository root.")
     sys.exit(1)
 

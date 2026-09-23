@@ -25,6 +25,7 @@
 - The script ran start to finish with **no errors** in about 15 seconds.
 - `hw02/hw02_profile.txt` and all three charts in `hw02/charts/` were created.
 - **Manual change made:** I edited the data path in the script (the `DATA_PATH` setting, the header comment, and the file-not-found message) from `data/raw/fact_transactions.csv` to `02_Data/Raw/fact_transactions.csv`, because that is where the file is stored in my repository. This changes only where the file is read from, not any calculation.
+- **Path restored before submission:** I later moved the file to `data/raw/`, the location the assignment specifies and the one both cross-validation scripts use. I then changed the script's path back to `data/raw/fact_transactions.csv`. A rerun from that path produced the same values in every section. `terminal_output.txt` and `hw02_profile.txt` are from the original run, so their "Loaded"/"Source" line still shows `02_Data/Raw/`.
 
 ---
 
