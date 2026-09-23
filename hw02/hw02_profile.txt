@@ -1,0 +1,103 @@
+Wildcat Capital — fact_transactions.csv EDA Profile (items 2–13)
+Source: 02_Data/Raw/fact_transactions.csv
+=== 2. SHAPE ===
+298,772 rows × 9 columns
+
+=== 3. COLUMNS AND DATA TYPES ===
+               dtype
+column              
+txn_id         int64
+client_id      int64
+advisor_id     int64
+security_id  float64
+txn_date      object
+txn_type      object
+shares       float64
+price        float64
+amount       float64
+
+=== 4. MISSING VALUES ===
+            missing_count missing_pct
+column                               
+txn_id                  0       0.00%
+client_id               0       0.00%
+advisor_id              0       0.00%
+security_id       101,597      34.00%
+txn_date                0       0.00%
+txn_type                0       0.00%
+shares            101,597      34.00%
+price             101,597      34.00%
+amount                  0       0.00%
+
+=== 5. DESCRIPTIVE STATISTICS (NUMERIC COLUMNS) ===
+                 txn_id  client_id  advisor_id  security_id     shares      price     amount
+count        298,772.00 298,772.00  298,772.00   197,175.00 197,175.00 197,175.00 298,772.00
+mean         149,386.50   1,249.66       12.80       249.32     247.77     255.13  54,075.17
+std           86,248.19     722.72        7.27       144.27     147.69     141.53  50,494.32
+min                1.00       1.00        1.00         1.00    -499.63      10.00      13.33
+25%           74,693.75     625.00        6.00       125.00     123.53     132.76  12,078.93
+50% (median) 149,386.50   1,246.00       13.00       248.00     248.77     255.09  41,220.49
+75%          224,079.25   1,873.00       19.00       375.00     373.83     377.93  81,827.01
+max          298,772.00   3,192.00       25.00       500.00     500.00     500.00 249,302.33
+
+=== 6. TRANSACTION TYPE BREAKDOWN ===
+              count percent
+txn_type                   
+Buy          83,556  27.97%
+Sell         59,755  20.00%
+Dividend     53,864  18.03%
+Deposit      35,981  12.04%
+Advisory Fee 35,766  11.97%
+Withdrawal   29,850   9.99%
+Distinct transaction types: 6
+
+=== 7. UNIQUE ENTITIES ===
+Unique clients    (client_id)  : 2,700
+Unique advisors   (advisor_id) : 25
+Unique securities (security_id): 500 (blanks ignored)
+
+=== 8. DATE RANGE ===
+txn_date stored as : object
+Earliest txn_date  : 2020-01-01
+Latest txn_date    : 2024-12-30
+
+=== 9. DUPLICATE CHECK (txn_id) ===
+Rows with a txn_id that appears more than once: 0
+
+=== 10. AMOUNT DISTRIBUTION ===
+Mean amount    : $54,075.17
+Median amount  : $41,220.49
+Skewness       : 1.15
+Interpretation : Right-skewed: a tail of large transactions pulls the mean above the median.
+
+=== 11. AMOUNT BY TRANSACTION TYPE (sorted by mean, descending) ===
+              count mean_amount median_amount
+txn_type                                     
+Dividend     53,864  $64,077.30    $48,805.60
+Buy          83,556  $63,738.49    $47,893.58
+Sell         59,755  $63,635.55    $48,080.16
+Deposit      35,981  $50,588.07    $50,760.33
+Withdrawal   29,850  $49,997.34    $49,843.42
+Advisory Fee 35,766   $7,375.17       $859.12
+
+=== 12. CORRELATION (shares, price, amount) ===
+        shares  price  amount
+shares    1.00   0.00    0.65
+price     0.00   1.00    0.64
+amount    0.65   0.64    1.00
+
+Three strongest correlations (ranked by absolute value):
+  1. shares – amount: 0.65
+  2. price – amount: 0.64
+  3. shares – price: 0.00
+
+=== 13. NEGATIVE SHARES CHECK (by txn_type) ===
+             min_shares max_shares negative_count
+txn_type                                         
+Advisory Fee     (none)     (none)              0
+Buy           -499.6323   499.9973            836
+Deposit          (none)     (none)              0
+Dividend         1.0024   499.9981              0
+Sell             1.0030   499.9961              0
+Withdrawal       (none)     (none)              0
+Total rows with negative shares: 836
