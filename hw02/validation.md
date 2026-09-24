@@ -156,27 +156,25 @@ The format here (YYYY-MM-DD) happens to sort correctly as text, which hides the 
 
 ### Business-Reasonableness Questions
 
-> Answered in my own words.
-
 **1. Which three transaction types would have no security, why, and do the counts add up to 101,597?**
 
-_[Your answer]_
+Deposit, Withdrawal, and Advisory Fee. Those are just cash moving in or out of the account (or the firm charging a fee), so there isn't a stock involved and no shares or price to record. Adding them up: 35,981 + 29,850 + 35,766 = 101,597, which matches the null count exactly. So the nulls are on purpose, not missing data.
 
 **2. What does it mean to have 83,556 Buys vs. 59,755 Sells over five years?**
 
-_[Your answer]_
+It means clients are buying more than they're selling, so overall money is flowing into investments instead of out. For a wealth management firm that's a good sign. Assets under management are probably growing, which also means more fee revenue. It could also be clients reinvesting dividends or just long-term buy-and-hold investors.
 
 **3. What would go wrong computing average days between transactions if `txn_date` stays a string?**
 
-_[Your answer]_
+The dates would just be text, so Python can't subtract them. You'd either get an error or something meaningless. You can't do date math, group by month, or filter by date range until you convert the column to an actual date type (like with pd.to_datetime).
 
 **4. Is ~108 clients per advisor (2,700 clients / 25 advisors) plausible for an RIA?**
 
-_[Your answer]_
+I think it's plausible, maybe a little on the high side. From what I've seen, advisors usually handle somewhere around 50 to 150 clients depending on how wealthy the clients are and how much support staff they have. So 108 is within the normal range and not a red flag.
 
 **5. Two plausible explanations for 836 negative-share Buy transactions, and what I would do next:**
 
-_[Your answer]_
+(1) A data entry or system error where the sign got flipped. This seems likely because the amount is still positive, only about 1% of Buys have it, and it never shows up on Sells. (2) A legit correction or reversal of an earlier Buy that was cancelled or entered wrong. Next I would check if each negative Buy matches an earlier Buy with the same client, security, and number of shares. I'd also check if amount equals shares × price without the negative sign, and look at whether they cluster on certain dates or advisors. If nothing matches up, it's probably a sign error.
 
 ### Cross-Validation — Count of `Buy` Transactions
 
@@ -198,4 +196,4 @@ Yes. Both approaches returned 83,556, which also matches the known-answer benchm
 
 **8. Why verify a count by subtraction rather than direct filtering?**
 
-_[Your answer]_
+Because it's a completely different method, it can catch mistakes the direct filter would miss. For example, if some rows said "buy" or "Buy " with a space, the direct filter would skip them and still look fine. Subtraction would count them in and give a different number. If both ways give the same answer, you can be a lot more confident the count is right.
