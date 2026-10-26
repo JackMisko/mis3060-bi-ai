@@ -29,10 +29,9 @@ hw04/
     ├── rule_checks.csv             48 rules x 2 stages: rows evaluated / failed, failing examples (96 rows)
     ├── reconciliations.csv         9 recomputed-vs-stored checks x 2 stages (18 rows)
     ├── outliers_iqr.csv            IQR fences on 4 columns x 2 stages, flagged rows by client tier (8 rows)
-    └── data_quality_scorecard.csv  8 tables x 2 stages, five quality percentages (16 rows)
+    ├── data_quality_scorecard.csv  8 tables x 2 stages, five quality percentages (16 rows)
+    └── cleaning_report.md          Part E: 2-page business report for the portfolio committee
 ```
-
-Part E (the business report) will be added in a later commit.
 
 ## How to run
 
@@ -138,8 +137,9 @@ Scorecard, raw -> clean, for the three tables that changed (the other five are 1
 % rule pass is row-weighted: failed evaluations / all evaluations across the table's rules. For example,
 `dim_client` raw = 1 - 78 / 20,124 = 99.612%.
 
-**`dim_client` completeness stays at ~99.79% on purpose.** The 76 blank `risk_profile` values were standardized to the
-explicit marker `'Unknown'` (D08), not filled in. The scorecard counts `'Unknown'` as still missing, so standardizing
+**`dim_client` completeness stays at ~99.79% on purpose.** The 75 blank `risk_profile` values were standardized to the
+explicit marker `'Unknown'` (D08), not filled in. (Raw has 76 blanks; one was on a quarantined duplicate client,
+so 75 remain; see `cleaning_log.csv` D08.) The scorecard counts `'Unknown'` as still missing, so standardizing
 a blank doesn't count as filling it.
 
 **IQR outliers (clean):** `fact_transactions.amount` 7,221 flagged, `fact_portfolio_snapshot.aum` 13,261,
@@ -166,3 +166,26 @@ to the same 48 rules in both stages, so `dim_client` raw rule pass is 99.612%.
 | 8 | `orphan_rows` used a boolean Series to index `fact_df`; a non-unique index could return extra rows | risk | **Fixed.** Positional mask (`.to_numpy()`) |
 | 9 | `certifications` accepted `'None'` inside a list (e.g. `'CFA, None'`) | bug | **Fixed.** `'None'` is valid only on its own (L03) |
 | 10 | The `fact_transactions` business key leaves out `client_id`, so two clients of one advisor with an identical same-day cash flow would count as duplicates | risk | **Not fixed (documented).** Leaving out `client_id` is what catches the 200 orphan copies, which differ from the real rows only there. The clean stage has 0 such pairs |
+
+## Part E
+
+[`reports/cleaning_report.md`](reports/cleaning_report.md): a 2-page report for the portfolio committee with an
+executive summary, cleaning summary table, scorecard (raw -> clean), 4 judgment calls with evidence, justification and
+risk, and 7 limitations. Every figure was checked against the decision log, cleaning log and Part C/D reports.
+
+## Claude Code review findings: Part E
+
+Claude Code fact-checked every number in the Claude Desktop draft against `decision_log.md`, `cleaning_log.csv`,
+`clean_run.txt`, `validate_run.txt` and the Part A/D report CSVs (no Python). 42 figures matched, including all
+15 scorecard values. Four statements didn't match their source:
+
+| # | Finding | Type | Action |
+|---|---|---|---|
+| 1 | "11 issues that only *look* wrong": the decision log lists **10** legitimate-structure items (L01-L10); the 11th "leave as is" row in the cleaning log is D12, a defect | wrong number | **Fixed.** Changed to 10 |
+| 2 | 40,649 Buy/Sell rows said to fall "on weekends"; the source counts **non-trading days** (dim_date, includes holidays), and "weekends" contradicted "all seven days" | wrong label | **Fixed.** "non-trading days, spread evenly across all seven days of the week" |
+| 3 | "Large trades by Retail clients (4,366 above $186k)": the IQR column is `fact_transactions.amount` over all transaction types, including deposits, withdrawals and dividends | wrong label | **Fixed.** "Large transactions" |
+| 4 | "420 snapshot balances are kept, because fees were billed on them": only 386 fee rows sit on the $1,000 floor | overstated | **Fixed.** "fees were billed on that $1,000 basis (386 fee rows)" |
+| 5 | The executive summary uses raw counts (197,175; 836), the table uses counts after quarantine (197,044; 835; 77; 75); a reader may see a contradiction | clarity | **Not fixed.** The figures are each correct for their stage; the README and cleaning log explain the overlap |
+| 6 | Judgment call 4 (orphans) has evidence and justification but no **Risk** bullet | gap | **Not fixed.** The brief requires three calls with risk; calls 1-3 have one |
+| 7 | About 1,150 words plus 2 tables, at the 2-page upper limit | length | **Not fixed.** Kept as is by choice |
+| 8 | `README.md` Part D said 76 blank risk profiles were standardized; 75 were (1 was on a quarantined duplicate) | wrong number (README) | **Fixed.** 75, with the reason |
