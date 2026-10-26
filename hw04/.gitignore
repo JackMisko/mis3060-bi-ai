@@ -9,3 +9,6 @@
 data/raw/
 
 __pycache__/
+
+# Local console log of 02_clean.py (not a deliverable)
+reports/clean_run.txt

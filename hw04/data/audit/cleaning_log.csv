@@ -1,0 +1,25 @@
+table,issue,action,rows_affected,note
+dim_client,"D06 duplicate clients (IDs 2501-2525, one-letter last-name edits)",quarantine,25,copy IDs 2501-2525; 0 fact rows reference them
+fact_transactions,D07 orphan client_id (each is a copy of a real transaction),quarantine,200,txn_id 298573-298772; matched real txn_id kept in quarantine file; removes 131 'N.0' security_ids and 1 negative-share rows before D01/D05
+fact_transactions,D01 security_id stored as decimal text,convert,197044,numeric value unchanged; join to dim_security 0% -> 100%
+fact_transactions,D05 negative shares on Buy rows,convert,835,abs(shares); amount = shares x price reconciles on all security rows after
+fact_portfolio_snapshot,D02 return_ytd stored as '%' strings,convert,300,/100; all 300 reconcile to benchmark + alpha (max gap 0.000050)
+fact_portfolio_snapshot,D03 return_ytd in scientific notation,standardize,135,plain decimal text; exact Decimal value unchanged
+fact_portfolio_snapshot,D03 active_alpha_ytd in scientific notation,standardize,756,plain decimal text; exact Decimal value unchanged
+dim_client,D04 state stored as full name,standardize,77,explicit 7-name map; 1 of the 78 raw full names was on a quarantined duplicate
+dim_client,D08 blank risk_profile,standardize,75,"set to 'Unknown'; NOT filled from benchmark (suitability attribute, evidence circular)"
+fact_transactions,D09 activity after client's last snapshot month (inactive clients),flag,2410,"is_post_departure_txn; 131 clients; $127,482,806 total amount; rows kept"
+fact_portfolio_snapshot,D10 |return_ytd| > 100% (return = AUM change incl. cash flows),flag,977,is_return_suspect; values unchanged
+fact_portfolio_snapshot,"D11 aum exactly 1,000.00 (floor value)",flag,420,is_aum_floor; real balance not recoverable; values unchanged
+fact_fees,"D11 aum_basis exactly 1,000.00 (floor value)",flag,386,"is_aum_floor; fee amount reconciles to the 1,000 basis; values unchanged"
+fact_transactions,D12 Buy/Sell on non-trading days,leave as is,0,even 2/7 spread = column-level artifact; documented limitation
+fact_transactions,L01 blank security_id/shares/price on cash rows,leave as is,0,legitimate structure (Deposit/Withdrawal/Advisory Fee)
+dim_security,L02 blank sector (ETFs) / expense_ratio_bps (non-ETFs),leave as is,0,legitimate structure: not applicable
+dim_advisor,L03 certifications = 'None',leave as is,0,"real value, kept as text"
+fact_transactions,L04 same-day cash flows differing only in amount,leave as is,0,"distinct events, not duplicates"
+fact_transactions,L05 recurring same-amount fees on different dates,leave as is,0,expected; also 2 fee rows
+dim_client,L06 zip_code leading zeros,leave as is,0,kept as text
+dim_security,"L07 duplicate security names, distinct tickers",leave as is,0,different securities
+fact_transactions,L08 dividend amount = full position value,leave as is,0,implausible but not derivable; documented limitation
+dim_benchmark,L09 benchmark 6 unused,leave as is,0,dimension members need not appear in facts
+dim_client,L10 zip prefix vs state mismatch,leave as is,0,no reference table; documented limitation
