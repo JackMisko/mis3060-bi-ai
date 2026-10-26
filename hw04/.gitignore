@@ -1,0 +1,11 @@
+# The repo root ignores *.csv except hw*/*.csv (top level only).
+# Re-include HW4 deliverable CSVs that live in subfolders.
+!reports/*.csv
+!data/clean/*.csv
+!data/audit/*.csv
+
+# Raw source data stays out of git (instructor-provided, ~35 MB).
+# Copy the eight files into data/raw/ before running.
+data/raw/
+
+__pycache__/
