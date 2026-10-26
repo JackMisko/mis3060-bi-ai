@@ -12,3 +12,6 @@ __pycache__/
 
 # Local console log of 02_clean.py (not a deliverable)
 reports/clean_run.txt
+
+# Local console log of 03_validate.py (not a deliverable)
+reports/validate_run.txt

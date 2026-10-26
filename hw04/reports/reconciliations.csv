@@ -1,0 +1,19 @@
+stage,reconciliation,tables,rows_evaluated,rows_failed,pct_pass,max_abs_diff,tolerance,rows_unmatched
+raw,R1 fee aum_basis = snapshot aum (same client-month),fact_fees x fact_portfolio_snapshot,122197,0,100.0,0.0,0.01,0.0
+raw,"R2 fee amount = aum_basis x bps / 10,000 / 12",fact_fees,122197,0,100.0,0.0050000000000000044,0.011,
+raw,R3 transaction amount = shares x price (signed),fact_transactions,197175,836,99.576,479263.017646,0.011,
+raw,R4a return_ytd = benchmark_return_ytd + active_alpha_ytd,fact_portfolio_snapshot,129247,0,100.0,1.0000000116860974e-06,0.0001,
+raw,R4b return_ytd = aum / prior-December aum - 1,fact_portfolio_snapshot (across months),104577,0,100.0,0.0003685237061574753,0.001,
+raw,R5 fact_fees.advisor_id = dim_client.advisor_id,fact_fees x dim_client,122197,0,100.0,0.0,0.0,
+raw,R5 fact_portfolio_snapshot.advisor_id = dim_client.advisor_id,fact_portfolio_snapshot x dim_client,129547,0,100.0,0.0,0.0,
+raw,R5 fact_transactions.advisor_id = dim_client.advisor_id,fact_transactions x dim_client,298572,0,100.0,0.0,0.0,
+raw,R6 snapshot account_type = dim_client.primary_account_type,fact_portfolio_snapshot x dim_client,129547,0,100.0,0.0,0.0,
+clean,R1 fee aum_basis = snapshot aum (same client-month),fact_fees x fact_portfolio_snapshot,122197,0,100.0,0.0,0.01,0.0
+clean,"R2 fee amount = aum_basis x bps / 10,000 / 12",fact_fees,122197,0,100.0,0.0050000000000000044,0.011,
+clean,R3 transaction amount = shares x price (signed),fact_transactions,197044,0,100.0,0.005000000004656613,0.011,
+clean,R4a return_ytd = benchmark_return_ytd + active_alpha_ytd,fact_portfolio_snapshot,129547,0,100.0,4.9999999999999806e-05,0.0001,
+clean,R4b return_ytd = aum / prior-December aum - 1,fact_portfolio_snapshot (across months),104823,0,100.0,0.0003685237061574753,0.001,
+clean,R5 fact_fees.advisor_id = dim_client.advisor_id,fact_fees x dim_client,122197,0,100.0,0.0,0.0,
+clean,R5 fact_portfolio_snapshot.advisor_id = dim_client.advisor_id,fact_portfolio_snapshot x dim_client,129547,0,100.0,0.0,0.0,
+clean,R5 fact_transactions.advisor_id = dim_client.advisor_id,fact_transactions x dim_client,298572,0,100.0,0.0,0.0,
+clean,R6 snapshot account_type = dim_client.primary_account_type,fact_portfolio_snapshot x dim_client,129547,0,100.0,0.0,0.0,
