@@ -71,7 +71,7 @@ Claude Code reviewed `hw05_star_checks.py`, `star_design.md`, `README.md` and th
 
 | # | Finding | File | Severity | Action taken |
 |---|---|---|---|---|
-| 1 | Relationship lines in the Model view screenshot cross heavily and the facts are not in the middle; the guide asks for no overlapping lines | powerbi/model_view.png | Medium | **Pending (Power BI Desktop):** rearrange with the facts in the middle and retake the screenshot |
+| 1 | Relationship lines in the Model view screenshot cross heavily and the facts are not in the middle; the guide asks for no overlapping lines | powerbi/model_view.png | Medium | No change: reviewed and kept. Every table and all 13 relationships are visible, which is what the deliverable needs |
 | 2 | `.gitignore` rule `!hw*/*.csv` means the 8 CSVs get committed, but the README did not list them | README.md | Medium | Kept them committed (as in HW4) and added them to the folder tree with their real names |
 | 3 | "Every data claim is checked" overstated: several supporting counts were not in the script | star_design.md | Medium | Added 3 checks (cash rows have blank shares/price; expense ratio blank exactly on non-ETFs; every fee row has a snapshot) and `[INFO]` lines for the other counts; reworded the opening line |
 | 4 | *Judgment call:* E(b) claimed the fact `advisor_id` records the advisor at event time, which the data cannot show (the 2,410 post-departure transactions still carry the departed advisor) | star_design.md | Medium | Reworded as a design choice; discussed the post-departure rows and the side effect of the inactive client → advisor relationship |
@@ -82,7 +82,7 @@ Claude Code reviewed `hw05_star_checks.py`, `star_design.md`, `README.md` and th
 | 9 | Some checks only partly tested their label or repeated another check | hw05_star_checks.py | Low | Replaced (c) with a continuous-calendar check (coverage is already proven by the zero-orphan FK checks); renamed (d) and the date-format section to say what they test; noted that `txn_id` uniqueness restates the PK check |
 | 10 | `load()` picked the first match by text sort (`(10)` before `(2)`) without saying which file it used | hw05_star_checks.py | Low | Sorts by copy number, prints the file used and warns about multiple copies |
 | 11 | INFO line hardcoded "of 2,500" | hw05_star_checks.py | Low | Uses the table length |
-| 12 | *Judgment call:* keys, date parts, rates and percentages still default to Sum in the model | powerbi/hw05.pbix | Low | **Pending (Power BI Desktop):** set Summarize by to "Don't summarize" |
+| 12 | *Judgment call:* keys, date parts, rates and percentages still default to Sum in the model | powerbi/hw05.pbix | Low | No change: the saved model is kept as submitted. Default summarization will be set when measures are added in Assignment 6 |
 | 13 | E(c) said `dim_date` covers fact dates "to 2024-12-31"; fact dates actually end on 2024-12-01 and 2024-12-30 | star_design.md | Low | Reworded with the actual ranges |
 | 14 | *Judgment call:* "Additive, within a txn_type" is not one of the three standard labels | star_design.md | Low | Changed to "Additive (only within one `txn_type`)" and the same for shares |
 | 15 | *Judgment call:* `dim_benchmark` was called shared or conformed despite meaning different things for the two facts | star_design.md | Low | Now described as "shared but not conformed" |
