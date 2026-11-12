@@ -1,0 +1,106 @@
+measure,slice,pandas_value
+AUM (naive SUM),total,566681084542.48
+Ending AUM,total,12729572078.86
+Ending Clients,total,2325.0
+Avg AUM per Client,total,5475084.765101075
+Ending AUM LY,total,10644971737.0
+AUM YoY %,total,0.19582957976434134
+Ending AUM PM,total,12211162447.939999
+AUM MoM %,total,0.04245374943869138
+Avg Monthly AUM,total,9444684742.374666
+Fee Yield (bps),total,43.34196189772209
+Organic Growth Rate,total,0.03075997144096503
+AUM-Weighted Alpha,total,0.01447994680056427
+Alpha Signal,total,In line
+Top 10 Client Share,total,0.06158926746579305
+AUM (naive SUM),year=2020,88551598743.62
+Ending AUM,year=2020,8130190789.369999
+Ending Clients,year=2020,1847.0
+Ending AUM LY,year=2020,
+AUM YoY %,year=2020,
+Avg Monthly AUM,year=2020,7379299895.301666
+Fee Yield (bps),year=2020,43.32673842183369
+Organic Growth Rate,year=2020,
+AUM-Weighted Alpha,year=2020,-0.006801702781131995
+Alpha Signal,year=2020,In line
+Top 10 Client Share,year=2020,0.07041115316733657
+AUM (naive SUM),year=2021,109624245862.67
+Ending AUM,year=2021,10010301949.11
+Ending Clients,year=2021,2157.0
+Ending AUM LY,year=2021,8130190789.369999
+AUM YoY %,year=2021,0.2312505583753576
+Avg Monthly AUM,year=2021,9135353821.889166
+Fee Yield (bps),year=2021,42.959355888291434
+Organic Growth Rate,year=2021,0.006200210701808894
+AUM-Weighted Alpha,year=2021,-0.0015743692248397724
+Alpha Signal,year=2021,In line
+Top 10 Client Share,year=2021,0.06375446125246416
+AUM (naive SUM),year=2022,115093764844.48001
+Ending AUM,year=2022,9308159286.53
+Ending Clients,year=2022,2500.0
+Ending AUM LY,year=2022,10010301949.11
+AUM YoY %,year=2022,-0.07014200632004175
+Avg Monthly AUM,year=2022,9591147070.373335
+Fee Yield (bps),year=2022,44.17488796608642
+Organic Growth Rate,year=2022,0.007549653468417021
+AUM-Weighted Alpha,year=2022,0.028494069910815337
+Alpha Signal,year=2022,Outperforming
+Top 10 Client Share,year=2022,0.055308650474536626
+AUM (naive SUM),year=2023,117951631307.98001
+Ending AUM,year=2023,10644971737.0
+Ending Clients,year=2023,2325.0
+Ending AUM LY,year=2023,9308159286.53
+AUM YoY %,year=2023,0.14361727268725663
+Avg Monthly AUM,year=2023,9829302608.998335
+Fee Yield (bps),year=2023,43.111706817538256
+Organic Growth Rate,year=2023,0.008326677402497868
+AUM-Weighted Alpha,year=2023,0.017689047135575224
+Alpha Signal,year=2023,In line
+Top 10 Client Share,year=2023,0.06037908915398748
+AUM (naive SUM),year=2024,135459843783.73
+Ending AUM,year=2024,12729572078.86
+Ending Clients,year=2024,2325.0
+Ending AUM LY,year=2024,10644971737.0
+AUM YoY %,year=2024,0.19582957976434134
+Avg Monthly AUM,year=2024,11288320315.310833
+Fee Yield (bps),year=2024,43.154344109040835
+Organic Growth Rate,year=2024,0.007281659094554338
+AUM-Weighted Alpha,year=2024,0.01447994680056427
+Alpha Signal,year=2024,In line
+Top 10 Client Share,year=2024,0.06158926746579305
+AUM (naive SUM),year=2024|tier=HNW,27140199691.64
+Ending AUM,year=2024|tier=HNW,2548521154.33
+Ending Clients,year=2024|tier=HNW,687.0
+Avg AUM per Client,year=2024|tier=HNW,3709637.77922853
+Ending AUM LY,year=2024|tier=HNW,2130154150.42
+AUM YoY %,year=2024|tier=HNW,0.19640221991798618
+Fee Yield (bps),year=2024|tier=HNW,61.385719579402526
+Organic Growth Rate,year=2024|tier=HNW,0.011842995613733375
+AUM-Weighted Alpha,year=2024|tier=HNW,0.01398804282685563
+Alpha Signal,year=2024|tier=HNW,In line
+Top 10 Client Share,year=2024|tier=HNW,0.03139674749179621
+AUM (naive SUM),year=2024|tier=Retail,5672978392.02
+Ending AUM,year=2024|tier=Retail,533452497.89
+Ending Clients,year=2024|tier=Retail,1394.0
+Avg AUM per Client,year=2024|tier=Retail,382677.54511477763
+Ending AUM LY,year=2024|tier=Retail,447795648.67
+AUM YoY %,year=2024|tier=Retail,0.19128557741552377
+Fee Yield (bps),year=2024|tier=Retail,82.81053646543552
+Organic Growth Rate,year=2024|tier=Retail,0.09867011379237657
+AUM-Weighted Alpha,year=2024|tier=Retail,0.024041008923824755
+Alpha Signal,year=2024|tier=Retail,Outperforming
+Top 10 Client Share,year=2024|tier=Retail,0.018348218311311202
+AUM (naive SUM),year=2024|tier=UHNW,102646665700.06999
+Ending AUM,year=2024|tier=UHNW,9647598426.64
+Ending Clients,year=2024|tier=UHNW,244.0
+Avg AUM per Client,year=2024|tier=UHNW,39539337.81409836
+Ending AUM LY,year=2024|tier=UHNW,8067021937.91
+AUM YoY %,year=2024|tier=UHNW,0.19593060498599493
+Fee Yield (bps),year=2024|tier=UHNW,36.14221284927203
+Organic Growth Rate,year=2024|tier=UHNW,0.0010042865201503285
+AUM-Weighted Alpha,year=2024|tier=UHNW,0.014096625252727847
+Alpha Signal,year=2024|tier=UHNW,In line
+Top 10 Client Share,year=2024|tier=UHNW,0.08126426752227993
+Ending AUM,month=2024-12,12729572078.86
+Ending AUM PM,month=2024-12,12211162447.939999
+AUM MoM %,month=2024-12,0.04245374943869138
